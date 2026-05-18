@@ -24,3 +24,29 @@
         0 0 10px #ffffff,
         0 0 25px #ffffff;
 }
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #111;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(159, 72, 184);
+    border-radius: 10px;
+
+     box-shadow:
+        0 0 5px rgb(218, 99, 250),
+        0 0 10px rgb(218, 99, 250),
+        0 0 25px rgb(218, 99, 250);
+    border: 2px solid #050505;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+    box-shadow:
+        0 0 5px #ffffff,
+        0 0 10px #ffffff,
+        0 0 25px #ffffff;
+}
