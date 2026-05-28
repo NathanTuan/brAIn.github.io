@@ -79,12 +79,15 @@ function drawBoxes(detections) {
         y1 *= scaleY;
         y2 *= scaleY;
 
-        ctx.strokeRect(x1, y1, x2 - x1, y2 - y1);
+        const posX = preview.offsetLeft + x1;
+        const posY = preview.offsetTop + y1;
+
+        ctx.strokeRect(posX, posY, x2 - x1, y2 - y1);
 
         ctx.fillText(
             `${classNames[det.class]} ${(det.confidence * 100).toFixed(1)}%`,
-            x1,
-            y1 - 5
+            posX,
+            posY - 5
         );
     });
 }
