@@ -90,6 +90,7 @@
 }
 
 .image-display {
+    background-color: transparent;
     height:90%;
     width:80%;
     border-style: solid;
@@ -103,7 +104,7 @@
 }
 
 #preview {
-    width:clamp(280px, 100%, 640px);
+    width:clamp(280px, 100%, 512px);
     height:auto;
     object-fit:contain;
 }

@@ -64,8 +64,8 @@ analyzeButton.addEventListener("click", async () => {
 function drawBoxes(detections) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    const scaleX = canvas.width / 640;
-    const scaleY = canvas.height / 640;
+    const scaleX = canvas.width / 512;
+    const scaleY = canvas.height / 512;
 
     ctx.strokeStyle = "red";
     ctx.lineWidth = 2;
