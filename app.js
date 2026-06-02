@@ -42,22 +42,24 @@ analyzeButton.addEventListener("click", async () => {
     preview.style.display = "block";
 
     preview.onload = async () => {
-        resizeCanvas();
+        requestAnimationFrame(async () => {
+            resizeCanvas();
+        
+            const response = await fetch(
+                "https://brain-website-backend.onrender.com/predict",
+                {
+                    method: "POST",
+                    body: formData
+                }
+            );
 
-        const response = await fetch(
-            "https://brain-website-backend.onrender.com/predict",
-            {
-                method: "POST",
-                body: formData
-            }
-        );
+            const data = await response.json();
+            console.log("detections:", data.detections);
 
-        const data = await response.json();
-        console.log("detections:", data.detections);
-
-        window.lastDetections = data.detections; 
-        drawBoxes(data.detections);
-        showResults(data.detections);
+            window.lastDetections = data.detections; 
+            drawBoxes(data.detections);
+            showResults(data.detections);
+        });
     };
 });
 
@@ -104,7 +106,15 @@ function showResults(detections) {
 }
 
 
+const observer = new ResizeObserver(() => {
+    resizeCanvas();
 
+    if (window.lastDetections) {
+        drawBoxes(window.lastDetections);
+    }
+});
+
+observer.observe(preview);
 
 /*
 async function analyzeImage(file) {
